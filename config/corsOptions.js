@@ -1,6 +1,6 @@
 const allowedOrigins = require('./allowedOrigins')
 
-const corsOptiosn = {
+const corsOptions = {
     origin: (origin, callback) => {
         if(allowedOrigins.indexOf(origin) !== -1 || !origin){
             callback(null, true)
@@ -12,4 +12,4 @@ const corsOptiosn = {
     optionsSuccessStatus: 200
 }
 
-module.exports = corsOptiosn
+module.exports = corsOptions
