@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    role: [{
+    roles: [{
         type: String,
         default: "Employee"
     }],
