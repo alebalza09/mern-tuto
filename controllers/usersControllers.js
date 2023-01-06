@@ -82,12 +82,15 @@ const updateUser = asyncHandler(async (req, res) => {
 
     //update password
     if (password){
-        const hashedPwd = await bcrypt.hash(password, 10)
+        user.password = await bcrypt.hash(password, 10)
     }
 
     const updatedUser = await user.save()
-
-    res.json({ message: 'User updated successfully'})
+    if (updatedUser){
+        res.json({ message: 'User updated successfully'})
+    } else {
+        return res.status(409).json({ message: 'Invalid user data'})
+    }
 })
 
 // @desc Delete user
