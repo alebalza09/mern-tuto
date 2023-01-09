@@ -43,8 +43,6 @@ app.all('*', (req, res) => {
 
 app.use(errorHandler)
 
-mongoose.set('strictQuery', false)
-
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB')
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
@@ -52,6 +50,6 @@ mongoose.connection.once('open', () => {
 
 mongoose.connection.on('error', err => {
     console.log(err)
-    logEvents(`${err.no}: ${err.code}\t${req.syscall}\t${req.url}\t${req.hostname}`, 'mongoErrLog.log')
+    logEvents(`${err.no}: ${err.code}`, 'mongoErrLog.log')
 })
 
